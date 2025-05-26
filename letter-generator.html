@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Consumer Math Letter Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      background-color: #f7f9fc;
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #004999;
+    }
+    #output {
+      margin-top: 40px;
+      padding: 25px;
+      border: 1px solid #aaa;
+      border-radius: 8px;
+      background-color: #ffffff;
+      font-family: 'Georgia', serif;
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h2>Write a Letter to Next Year's Consumer Math Students</h2>
+
+  <label>Your First Name</label>
+  <input type="text" id="name" required />
+
+  <label>When did you take the class? <br><small>(Format: Semester, Year — e.g., Spring 2025)</small></label>
+  <input type="text" id="semester" />
+
+  <label>What did you enjoy about the class?</label>
+  <textarea id="enjoyed"></textarea>
+
+  <label>What is something important you learned in this class?</label>
+  <textarea id="learned"></textarea>
+
+  <label>How did you help shape the course? <br><small>(Use -ing words like “giving feedback,” “testing activities,” etc.)</small></label>
+  <textarea id="shaped"></textarea>
+
+  <label>What advice would you give to next year's students?</label>
+  <textarea id="advice"></textarea>
+
+  <button onclick="generateLetter()">Generate Letter</button>
+
+  <div id="output"></div>
+
+  <script>
+    function generateLetter() {
+      const name = document.getElementById("name").value.trim();
+      const semester = document.getElementById("semester").value.trim();
+      const enjoyed = document.getElementById("enjoyed").value.trim();
+      const learned = document.getElementById("learned").value.trim();
+      const shaped = document.getElementById("shaped").value.trim();
+      const advice = document.getElementById("advice").value.trim();
+
+      if (!name || !semester || !enjoyed || !learned || !shaped || !advice) {
+        alert("Please fill out all fields before generating your letter.");
+        return;
+      }
+
+      const letter =
+        `Dear Future Consumer Math Student,\n\n` +
+        `My name is ${name}, and I took Consumer Math in ${semester}.\n\n` +
+        `One thing I really enjoyed about this class was ${enjoyed}.\n` +
+        `Something I learned that will help me in real life is ${learned}.\n\n` +
+        `This class was unique because we helped shape it. I contributed by ${shaped}.\n` +
+        `Now it’s your turn to build on what we started—make the course even better!\n\n` +
+        `My advice to you is: ${advice}\n\n` +
+        `Good luck!\n\nSincerely,\n${name}`;
+
+      document.getElementById("output").textContent = letter;
+    }
+  </script>
+</body>
+</html>
